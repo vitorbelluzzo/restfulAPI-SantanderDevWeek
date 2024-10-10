@@ -1,4 +1,7 @@
 package com.vitorbelluzzo.restfulAPI_SantanderDevWeek.model;
 
-public class News {
+import jakarta.persistence.Entity;
+
+@Entity(name = "tb_news")
+public class News extends BaseItems  {
 }

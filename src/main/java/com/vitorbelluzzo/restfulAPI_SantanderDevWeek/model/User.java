@@ -2,6 +2,8 @@ package com.vitorbelluzzo.restfulAPI_SantanderDevWeek.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity(name = "tb_users")
 public class User {
 
@@ -10,37 +12,21 @@ public class User {
     private Long id;
     private String name;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Account account;
-    @OneToOne
-    private  Card card;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Card card;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private Feature feature;
+    private List<Feature> feature;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private News news;
+    private List<News> news;
 
-    public String getName() {
-        return name;
+    public Account getAccount() {
+        return account;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public News getNews() {
-        return news;
-    }
-
-    public void setNews(News news) {
-        this.news = news;
-    }
-
-    public Feature getFeature() {
-        return feature;
-    }
-
-    public void setFeature(Feature feature) {
-        this.feature = feature;
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public Card getCard() {
@@ -51,11 +37,35 @@ public class User {
         this.card = card;
     }
 
-    public Account getAccount() {
-        return account;
+    public List<Feature> getFeature() {
+        return feature;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setFeature(List<Feature> feature) {
+        this.feature = feature;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<News> getNews() {
+        return news;
+    }
+
+    public void setNews(List<News> news) {
+        this.news = news;
     }
 }

@@ -1,20 +1,20 @@
 package com.vitorbelluzzo.restfulAPI_SantanderDevWeek.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
-@Entity
+@Entity(name = "tb_accountsh")
 public class Account {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique = true)
     private String number;
     private String agency;
+
+    @Column(precision = 13, scale = 2)
     private BigDecimal balance;
 
     public String getNumber() {

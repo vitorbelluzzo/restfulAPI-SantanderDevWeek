@@ -1,18 +1,18 @@
 package com.vitorbelluzzo.restfulAPI_SantanderDevWeek.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
-@Entity
+@Entity(name = "tb_cards")
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private  String number;
+    @Column(precision = 13, scale = 2)
+    private BigDecimal cardLimit;
 
     public String getNumber() {
         return number;
@@ -30,5 +30,4 @@ public class Card {
         this.cardLimit = cardLimit;
     }
 
-    private BigDecimal cardLimit;
 }
